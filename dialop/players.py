@@ -11,8 +11,10 @@ from utils import num_tokens
 try:
     with open(pathlib.Path(__file__).parent / ".api_key") as f:
         x = json.load(f)
-        openai.organization = x["organization"]
-        openai.api_key = x["api_key"]
+        # openai.organization = x["organization"]
+        # openai.api_key = x["api_key"]
+        openai.api_base = "http://localhost:8000/v1"
+        openai.api_key = "none"
     print("Loaded .api_key")
 except:
     openai.api_key = os.getenv("OPENAI_API_KEY")
